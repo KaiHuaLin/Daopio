@@ -1,12 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"
+
+import HomePage from './pages/home.page'
+import CreatePollPage from './pages/createPoll.page'
+import PollPage from './pages/poll.page'
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <Route path='/' exact component={HomePage}/>
+      <Route path='/create' component={CreatePollPage}/>
+      <Route path='/poll/:pollID' component={PollPage}/>
+      {/* ?? */}
+    </Router>
   );
 }
 

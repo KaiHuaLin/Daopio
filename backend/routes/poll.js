@@ -9,15 +9,17 @@ router.route('/:id').get((req, res) => {
 });
 
 // create a new poll to database and response with the id 
-router.route('/add').post((req, res) => {
+router.route('/create').post((req, res) => {
     const title = req.body.title
     const description = req.body.description
     const options = req.body.options
+    const choices = req.body.choices
 
     const newPoll = new Poll({
         title,
         description,
-        options
+        options,
+        choices
     })
 
     newPoll.save()

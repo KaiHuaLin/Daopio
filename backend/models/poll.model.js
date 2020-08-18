@@ -11,7 +11,6 @@ const pollSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
         trim: true,
         minlength: 0
     },
@@ -20,7 +19,7 @@ const pollSchema = new Schema({
         trim: true,
         unique: true,
         minlength: 0
-    }],
+    }]
 }, {
     timestamps: true,
 })

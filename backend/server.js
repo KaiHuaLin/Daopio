@@ -18,8 +18,10 @@ connection.once('open', () => {
 });
 
 const pollRouter = require('./routes/poll');
+const responseRouter = require('./routes/response');
 
 app.use('/poll', pollRouter);
+app.use('/response', responseRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
