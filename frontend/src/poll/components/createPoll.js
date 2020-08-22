@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import {Container, IconButton, TextField } from '@material-ui/core/';
+import { IconButton, TextField } from '@material-ui/core/';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'
 
-import OptionList from './optionList.component';
+import OptionList from './optionList';
 
 
 function CreatePoll(){
@@ -59,41 +59,39 @@ function CreatePoll(){
     }
 
     return(
-        <Container>
-            <form onSubmit={onSubmit}>
-                <TextField 
-                    required 
-                    id='title' 
-                    label='Title'
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                />
-                <br />
-                <br />
-                <TextField 
-                    id='description' 
-                    label='Description'
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                />
-                <OptionList 
-                    options={options}
-                    handleDelete={handleDelete}
-                    handleValue={handleValue}
-                />
-                <br />
-                <IconButton
-                    onClick={() => addOption({
-                        id: uuidv4(),
-                        value: ""
-                    })}
-                >
-                    <AddCircleIcon />
-                </IconButton>
-                <br />
-                <input type="submit" value="Create Poll" className="btn btn-primary" />
-            </form>
-        </Container>
+        <form onSubmit={onSubmit}>
+            <TextField 
+                required 
+                id='title' 
+                label='Title'
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+            />
+            <br />
+            <br />
+            <TextField 
+                id='description' 
+                label='Description'
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+            />
+            <OptionList 
+                options={options}
+                handleDelete={handleDelete}
+                handleValue={handleValue}
+            />
+            <br />
+            <IconButton
+                onClick={() => addOption({
+                    id: uuidv4(),
+                    value: ""
+                })}
+            >
+                <AddCircleIcon />
+            </IconButton>
+            <br />
+            <input type="submit" value="Create Poll" className="btn btn-primary" />
+        </form>
     )
 }
 

@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import HomePage from './pages/home.page'
-import CreatePollPage from './pages/createPoll.page'
-import PollPage from './pages/poll.page'
+import CreatePollPage from './poll/pages/createPoll.page'
+import PollPage from './poll/pages/poll.page'
 
 function App() {
   return (

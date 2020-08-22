@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Option from './option.component';
+import Option from './option';
 
 
 function OptionList({options, handleDelete, handleValue}) {
