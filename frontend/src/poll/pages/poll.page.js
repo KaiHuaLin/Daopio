@@ -2,6 +2,7 @@ import React from 'react';
 
 import Poll from '../components/poll';
 import Response from '../components/response';
+import Result from '../components/result';
 
 import { Grid } from '@material-ui/core/';
 
@@ -10,13 +11,12 @@ function PollPage(props){
     const pollID = props.match.params.pollID;
 
     return(
-        <Grid container spacing={10}>
-            <Grid item xs={12}>
+        <Grid>
+            <Grid item xs={12} justify='space-between'>
                 <Grid 
                     container
-                    justify='center'
+                    justify='space-around'
                     alignItems="center"
-                    spacing={10}
                 >
                     <Grid item>
                         <Poll pollID={pollID}/>
@@ -27,7 +27,9 @@ function PollPage(props){
                 </Grid>
             </Grid>
             <Grid item xs={12}>
-                {/* result of response */}
+                <Grid>
+                    <Result pollID={pollID}/>
+                </Grid>
             </Grid>
         </Grid>
     )
