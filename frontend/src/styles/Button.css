@@ -1,0 +1,15 @@
+.klButton {
+    background-color: white;
+    color: #CD5515;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 1px solid #CD5515;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+  
+.klButton:hover {
+    background-color: #CD5515;
+    color: white;
+}
+  

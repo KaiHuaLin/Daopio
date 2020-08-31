@@ -1,19 +1,21 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 
-import {Container, Button} from '@material-ui/core/';
+import {Container} from '@material-ui/core/';
+
+import '../styles/Button.css'
 
 function HomePage(){
 let history = useHistory();
 
     return(
         <Container>
-            <Button 
-                class="klButtom"
+            <div 
+                className="klButton"
                 onClick={() => { history.push('/create') }}
             >
                 Create a new Poll
-            </Button>
+            </div>
         </Container>
     )
 }

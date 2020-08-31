@@ -8,6 +8,8 @@ import axios from 'axios'
 
 import OptionList from './optionList';
 
+import '../../styles/Button.css'
+
 
 function CreatePoll(){
     const [title, setTitle] = useState('');
@@ -94,7 +96,7 @@ function CreatePoll(){
                 <AddCircleIcon />
             </IconButton>
             <br />
-            <input type="submit" value="Create Poll" class="klButtom"/>
+            <input type="submit" value="Create Poll" className="klButton"/>
         </form>
     )
 }

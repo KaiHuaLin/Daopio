@@ -11,6 +11,8 @@ import {
 } from '@material-ui/core/'
 import { makeStyles } from '@material-ui/core/styles';
 
+import '../../styles/Button.css'
+
 import axios from 'axios'
 
 const useStyles = makeStyles({
@@ -140,7 +142,7 @@ function Response(props){
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
-                    <input type="submit" value="Submit" class="klButtom"/>
+                    <input type="submit" value="Submit" className="klButton"/>
                 </Grid>
             </div>
         </form>
