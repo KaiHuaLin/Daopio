@@ -44,6 +44,10 @@ function CreatePoll(){
                 optionsList.push(option.value)
             })
 
+            // remove duplicate options
+            const uniqueSet = new Set(optionsList)
+            optionsList = [...uniqueSet]
+
             const poll = {
                 title: title,
                 description: description,

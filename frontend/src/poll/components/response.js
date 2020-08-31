@@ -6,24 +6,72 @@ import {
     FormControlLabel, 
     RadioGroup, 
     Radio,
-    TextField
+    TextField,
+    Grid
 } from '@material-ui/core/'
+import { makeStyles } from '@material-ui/core/styles';
 
 import axios from 'axios'
 
-function Response(props){
+const useStyles = makeStyles({
+    options: {
+        backgroundColor: "white",
+        border: "1px solid white",
+        borderRadius: "20px",
+        margin: "10px",
+        padding: "10px 10px 0px 10px"
+    },
+    submitBar: {
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        textAlign: "center",
+        padding: "15px",
+        position: "fixed",
+        width: "100%",
+        bottom: "0",
+        left: "50%",
+        transform: "translateX(-50%)"
+    }
+})
+
+function Response(props){    
     const pollID = props.pollID;
     const [name, setName] = useState('');
     const [options, setOptions] = useState([]);
     const [responseChoice, setResponseChoice] = useState('');
 
+    const [initoptionsMap, setInitoptionsMap] = useState(new Map());
+    const [optionsMap, setOptionsMap] = useState(new Map());
+
+    const classes = useStyles();
+
     useEffect(() => {
         axios.get('http://localhost:5000/poll/'+pollID)
             .then(res => {
-                const poll = res.data
-                setOptions(poll.options);
+                const optionsArray = res.data.options
+                let map = new Map();
+                
+                optionsArray.forEach(option => {
+                    map.set(option, 0)
+                })
+                setInitoptionsMap(map)
+                setOptions(optionsArray);
             })
-    }, [pollID])
+
+        // choice from the responses
+        axios.get('http://localhost:5000/response/'+pollID)
+            .then(res => {
+                const responses = res.data
+
+                let map = initoptionsMap
+                responses.forEach(response => {
+                    const choice = response.choice
+                    if(map.has(choice)){
+                        map.set(choice, map.get(choice) + 1)
+                    }
+                })
+                setOptionsMap(map);
+            })
+    }, [pollID, initoptionsMap])
 
     const handleResponseChange = event => {
         setResponseChoice(event.target.value);
@@ -49,16 +97,9 @@ function Response(props){
 
     return(
         <form onSubmit={onSubmit}>
-            <TextField 
-                required 
-                id='name' 
-                label='Enter your name'
-                value={name}
-                onChange={e => setName(e.target.value)}
-            />
             <br />
             <br />
-            <FormControl>
+            <FormControl fullWidth>
                 <FormLabel>Choose your option</FormLabel>
                 <RadioGroup 
                     aria-label="option" 
@@ -67,18 +108,34 @@ function Response(props){
                     onChange={handleResponseChange}
                 >
                     {options.map(option => (
-                        <FormControlLabel 
-                            key={option}
-                            value={option} 
-                            control={<Radio required/>} 
-                            label={option} 
-                        />
+                        <div className={classes.options} key={option}>
+                            <Grid container justify="space-between">
+                                <FormControlLabel 
+                                    key={option}
+                                    value={option} 
+                                    control={<Radio required/>} 
+                                    label={option} 
+                                />
+                                <h3>{optionsMap.get(option)}</h3>
+                            </Grid>
+                        </div>
                     ))}
                 </RadioGroup>
             </FormControl>
             <br />
             <br />
-            <input type="submit" value="Submit" className="btn btn-primary" />
+            <div className={classes.submitBar}>
+                <Grid container justify="space-evenly">
+                    <TextField 
+                        required 
+                        id='name' 
+                        label='Enter your name'
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                    />
+                    <input type="submit" value="Submit" className="btn btn-primary" />
+                </Grid>
+            </div>
         </form>
     )
 }

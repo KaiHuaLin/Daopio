@@ -12,7 +12,6 @@ function App() {
       <Route path='/' exact component={HomePage}/>
       <Route path='/create' component={CreatePollPage}/>
       <Route path='/poll/:pollID' component={PollPage}/>
-      {/* ?? */}
     </Router>
   );
 }
