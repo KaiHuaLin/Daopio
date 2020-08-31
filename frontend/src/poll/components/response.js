@@ -30,7 +30,14 @@ const useStyles = makeStyles({
         bottom: "0",
         left: "50%",
         transform: "translateX(-50%)"
-    }
+    },
+    radioButtom: {
+        color: "inherit",
+        '&$checked': {
+            color: '#CD5515'
+        }
+    },
+    checked: {}
 })
 
 function Response(props){    
@@ -113,7 +120,7 @@ function Response(props){
                                 <FormControlLabel 
                                     key={option}
                                     value={option} 
-                                    control={<Radio required/>} 
+                                    control={<Radio required classes={{root: classes.radioButtom, checked: classes.checked}}/>} 
                                     label={option} 
                                 />
                                 <h3>{optionsMap.get(option)}</h3>
@@ -133,7 +140,7 @@ function Response(props){
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
-                    <input type="submit" value="Submit" className="btn btn-primary" />
+                    <input type="submit" value="Submit" class="klButtom"/>
                 </Grid>
             </div>
         </form>

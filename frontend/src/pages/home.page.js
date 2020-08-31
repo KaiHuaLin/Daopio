@@ -9,8 +9,7 @@ let history = useHistory();
     return(
         <Container>
             <Button 
-                variant="contained" 
-                color="primary" 
+                class="klButtom"
                 onClick={() => { history.push('/create') }}
             >
                 Create a new Poll

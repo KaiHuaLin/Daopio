@@ -94,7 +94,7 @@ function CreatePoll(){
                 <AddCircleIcon />
             </IconButton>
             <br />
-            <input type="submit" value="Create Poll" className="btn btn-primary" />
+            <input type="submit" value="Create Poll" class="klButtom"/>
         </form>
     )
 }
