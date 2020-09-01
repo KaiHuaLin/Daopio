@@ -22,16 +22,6 @@ const useStyles = makeStyles({
         margin: "10px",
         padding: "10px 10px 0px 10px"
     },
-    submitBar: {
-        backgroundColor: "rgba(255, 255, 255, 0.8)",
-        textAlign: "center",
-        padding: "15px",
-        position: "fixed",
-        width: "100%",
-        bottom: "0",
-        left: "50%",
-        transform: "translateX(-50%)"
-    },
     radioButtom: {
         color: "inherit",
         '&$checked': {

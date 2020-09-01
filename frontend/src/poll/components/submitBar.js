@@ -4,13 +4,27 @@ import {
     TextField,
     Grid
 } from '@material-ui/core/'
+import { makeStyles } from '@material-ui/core/styles';
 
 import '../../styles/Button.css'
-import '../../styles/SubmitBar.css'
+
+const useStyles = makeStyles({
+    submitBar: {
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        textAlign: "center",
+        padding: "15px",
+        position: "fixed",
+        width: "100%",
+        bottom: "0",
+        left: "50%",
+        transform: "translateX(-50%)"
+    }
+})
 
 function SubmitBar(props){
+    const classes = useStyles();
     return(
-        <div className="klSubmitBar">
+        <div className={classes.submitBar}>
             <Grid container justify="space-evenly">
                 <TextField 
                     required 
