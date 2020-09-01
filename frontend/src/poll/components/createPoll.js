@@ -37,8 +37,6 @@ function CreatePoll(){
     function onSubmit(e){
         e.preventDefault();
 
-        options.map(option => console.log(option))
-
         let optionsList = [];
 
         options.forEach(option => {
