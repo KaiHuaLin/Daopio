@@ -8,10 +8,10 @@ import axios from 'axios'
 
 import OptionList from './optionList';
 
-import '../../styles/Button.css'
-
+import SubmitBar from './submitBar';
 
 function CreatePoll(){
+    const [name, setName] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [options, setOptions] = useState([]);
@@ -39,13 +39,14 @@ function CreatePoll(){
 
         options.map(option => console.log(option))
 
-        if(options.length > 0){
-            let optionsList = [];
+        let optionsList = [];
 
-            options.forEach(option => {
+        options.forEach(option => {
+            if(option.value !== "")
                 optionsList.push(option.value)
-            })
+        })
 
+        if(optionsList.length > 0){
             // remove duplicate options
             const uniqueSet = new Set(optionsList)
             optionsList = [...uniqueSet]
@@ -61,7 +62,13 @@ function CreatePoll(){
                     window.location = 'http://localhost:3000/poll/' + res.data
                 })
 
+        } else {
+            console.log("enter option")
         }
+    }
+
+    const handleNameChange = e => {
+        setName(e.target.value)
     }
 
     return(
@@ -96,7 +103,11 @@ function CreatePoll(){
                 <AddCircleIcon />
             </IconButton>
             <br />
-            <input type="submit" value="Create Poll" className="klButton"/>
+            <SubmitBar 
+                name={name}
+                handleNameChange={handleNameChange}
+                value="Create Poll"
+            />
         </form>
     )
 }

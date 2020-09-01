@@ -1,0 +1,16 @@
+.klContainer {
+    background-color: #DBFADD;
+    color: #4A960B;
+    margin: 10px 200px 80px 200px;
+    padding: 20px;
+    border-radius: 20px;
+    /* [theme.breakpoints.down('md')]: {
+        margin: "10px 0px 80px 0px"
+    }, */
+}
+
+@media only screen and (max-width: 960px) {
+    .klContainer {
+        margin: 10px 0px 80px 0px;
+    }
+  }

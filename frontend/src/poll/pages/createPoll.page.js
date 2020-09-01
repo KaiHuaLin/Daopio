@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import CreatePoll from '../components/createPoll';
 
+import '../../styles/Container.css'
+
 const useStyles = makeStyles({
     pollForm: {
         textAlign: 'center'
@@ -15,8 +17,8 @@ function CreatePollPage(){
     const classes = useStyles();
 
     return(
-        <Container>
-            <div className={classes.pollForm}>
+        <Container className={classes.pollForm}>
+            <div className="klContainer">
                 <CreatePoll />
             </div>
         </Container>

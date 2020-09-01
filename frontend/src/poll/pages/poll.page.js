@@ -3,32 +3,17 @@ import React from 'react';
 import Poll from '../components/poll';
 import Response from '../components/response';
 
-import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core/';
 
-
-const useStyles = makeStyles(theme => ({
-    content: {
-        backgroundColor: "#DEF5CA",
-        color: "#4A960B",
-        margin: "10px 200px 80px 200px",
-        padding: "20px",
-        borderRadius: "20px",
-        [theme.breakpoints.down('md')]: {
-            margin: "10px 0px 80px 0px"
-        },
-    }
-}))
+import '../../styles/Container.css'
 
 
 function PollPage(props){
     const pollID = props.match.params.pollID;
 
-    const classes = useStyles();
-
     return(
         <Container> 
-            <div className={classes.content}>
+            <div className="klContainer">
                 <Grid>
                     <Grid item xs={12}>
                         <Grid container justify="center">

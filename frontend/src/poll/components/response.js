@@ -6,14 +6,13 @@ import {
     FormControlLabel, 
     RadioGroup, 
     Radio,
-    TextField,
     Grid
 } from '@material-ui/core/'
 import { makeStyles } from '@material-ui/core/styles';
 
-import '../../styles/Button.css'
-
 import axios from 'axios'
+
+import SubmitBar from './submitBar';
 
 const useStyles = makeStyles({
     options: {
@@ -82,9 +81,13 @@ function Response(props){
             })
     }, [pollID, initoptionsMap])
 
-    const handleResponseChange = event => {
-        setResponseChoice(event.target.value);
+    const handleResponseChange = e => {
+        setResponseChoice(e.target.value);
     };
+
+    const handleNameChange = e => {
+        setName(e.target.value)
+    }
 
     const onSubmit = e => {
         e.preventDefault();
@@ -133,18 +136,11 @@ function Response(props){
             </FormControl>
             <br />
             <br />
-            <div className={classes.submitBar}>
-                <Grid container justify="space-evenly">
-                    <TextField 
-                        required 
-                        id='name' 
-                        label='Enter your name'
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                    />
-                    <input type="submit" value="Submit" className="klButton"/>
-                </Grid>
-            </div>
+            <SubmitBar 
+                name={name}
+                handleNameChange={handleNameChange}
+                value="Submit"
+            />
         </form>
     )
 }
