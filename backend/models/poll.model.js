@@ -7,12 +7,18 @@ const pollSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        minlength: 0
+        minlength: 1
     },
     description: {
         type: String,
         trim: true,
         minlength: 0
+    },
+    username: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 1
     },
     options: [{
         type: String,

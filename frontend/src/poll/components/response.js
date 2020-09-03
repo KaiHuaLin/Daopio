@@ -37,7 +37,7 @@ function Response(props){
     const [options, setOptions] = useState([]);
     const [responseChoice, setResponseChoice] = useState('');
 
-    const [initoptionsMap, setInitoptionsMap] = useState(new Map());
+    const [initOptionsMap, setInitOptionsMap] = useState(new Map());
     const [optionsMap, setOptionsMap] = useState(new Map());
 
     const classes = useStyles();
@@ -51,7 +51,7 @@ function Response(props){
                 optionsArray.forEach(option => {
                     map.set(option, 0)
                 })
-                setInitoptionsMap(map)
+                setInitOptionsMap(map)
                 setOptions(optionsArray);
             })
 
@@ -60,7 +60,7 @@ function Response(props){
             .then(res => {
                 const responses = res.data
 
-                let map = initoptionsMap
+                let map = initOptionsMap
                 responses.forEach(response => {
                     const choice = response.choice
                     if(map.has(choice)){
@@ -69,7 +69,7 @@ function Response(props){
                 })
                 setOptionsMap(map);
             })
-    }, [pollID, initoptionsMap])
+    }, [pollID, initOptionsMap])
 
     const handleResponseChange = e => {
         setResponseChoice(e.target.value);

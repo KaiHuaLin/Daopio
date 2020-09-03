@@ -14,7 +14,10 @@ function CreatePoll(){
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [options, setOptions] = useState([]);
+    const [options, setOptions] = useState([{
+        id: uuidv4(),
+        value: ""
+    }]);
 
     function addOption(option) {
         setOptions([...options, option])
@@ -52,6 +55,7 @@ function CreatePoll(){
             const poll = {
                 title: title,
                 description: description,
+                username: name,
                 options: optionsList,
             }
 
@@ -61,7 +65,7 @@ function CreatePoll(){
                 })
 
         } else {
-            console.log("enter option")
+            window.alert("Please add an option")
         }
     }
 
